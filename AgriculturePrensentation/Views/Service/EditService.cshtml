@@ -1,0 +1,20 @@
+﻿@model EntityLayer.Concrete.Service
+@{
+    ViewData["Title"] = "EditService";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Hizmet Güncelleme Sayfası</h1>
+
+<form method="post">
+    <div class="form-group">
+        @Html.HiddenFor(X=>X.ServiceID)
+        @Html.Label("Başlık")
+        <input type="text" asp-for="ServiceTitle" class="form-control" />
+        @Html.Label("Açıklama")
+        <input type="text" asp-for="ServiceDesc" class="form-control" />
+        @Html.Label("Resim")
+        <input type="text" asp-for="ServiceImage" class="form-control" />
+    </div>
+    <button class="btn btn-success">Hizmet Düzenle</button>
+</form>
