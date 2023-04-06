@@ -30,8 +30,22 @@ namespace AgriculturePrensentation
         {
             services.AddScoped<IServiceService,ServiceManager>();
             services.AddScoped<IServiceDal,EFServiceDal>();
+
             services.AddScoped<ITeamService, TeamManager>();
             services.AddScoped<ITeamDal, EFTeamDal>();
+
+            services.AddScoped<IAnnouncementService, AnnouncementManager>();
+            services.AddScoped<IAnnouncementDal, EFAnnouncementDal>();
+
+            services.AddScoped<IImageService, ImageManager>();
+            services.AddScoped<IImageDal, EFImageDal>();
+
+            services.AddScoped<IAddressService, AddressManager>();
+            services.AddScoped<IAddressDal, EFAddressDal>();
+
+            services.AddScoped<IContactService, ContactManager>();
+            services.AddScoped<IContactDal, EFContactDal>();
+
 
             services.AddDbContext<AgricultureContext>();
             services.AddControllersWithViews();

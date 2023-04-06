@@ -9,6 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface IAnnouncementDal:IGenericDal<Announcement>
     {
-
+        void AnnouncementStatusTrue(int id);
+        void AnnouncementStatusFalse(int id);
     }
 }

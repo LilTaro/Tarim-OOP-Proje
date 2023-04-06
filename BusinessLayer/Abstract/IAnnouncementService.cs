@@ -9,6 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IAnnouncementService:IGenericService<Announcement>
     {
-
+        void AnnouncementStatusTrue(int id);
+        void AnnouncementStatusFalse(int id);
     }
 }
