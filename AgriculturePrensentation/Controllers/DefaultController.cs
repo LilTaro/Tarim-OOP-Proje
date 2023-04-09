@@ -1,14 +1,37 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace AgriculturePrensentation.Controllers
 {
     public class DefaultController : Controller
     {
-        public IActionResult Index()
+        private readonly IContactService _contactService;
+
+		public DefaultController(IContactService contactService)
+		{
+			_contactService = contactService;
+		}
+
+		public IActionResult Index()
         {
             return View();
         }
-    }
+        [HttpGet]
+        public PartialViewResult SendMessage()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+		public IActionResult SendMessage(Contact P)
+		{
+            P.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
+            _contactService.Insert(P);
+            return RedirectToAction("Index","Default");
+		}
+	}
 }

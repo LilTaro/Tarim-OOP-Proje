@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class AddressManager : IAddressService
     {
-        IAddressDal _addressDal;
+        private readonly IAddressDal _addressDal;
 
         public AddressManager(IAddressDal addressDal)
         {
