@@ -33,5 +33,9 @@ namespace AgriculturePrensentation.Controllers
             _contactService.Insert(P);
             return RedirectToAction("Index","Default");
 		}
+        public PartialViewResult ScriptPartial()
+        {
+            return PartialView();
+        }
 	}
 }
