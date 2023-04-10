@@ -52,6 +52,9 @@ namespace AgriculturePrensentation
 			services.AddScoped<IAboutService, AboutManager>();
 			services.AddScoped<IAboutDal, EFAboutDal>();
 
+			services.AddScoped<IAdminService, AdminManager>();
+			services.AddScoped<IAdminDal, EFAdminDal>();
+
 
 			services.AddDbContext<AgricultureContext>();
             services.AddControllersWithViews();
