@@ -53,7 +53,6 @@ namespace AgriculturePrensentation.Controllers
         {
             IdentityUser ıdentityUser = new IdentityUser()
             {
-                Id = "1",
                 UserName = registerViewModel.UserName,
                 Email = registerViewModel.Mail
             };

@@ -9,6 +9,7 @@
         <div class="card-body">
             <h4 class="card-title">Admin Düzenleme</h4>
             <form class="forms-sample" method="post">
+                @Html.HiddenFor(X=>X.AdminID)
                 <div class="form-group">
                     <label>Kullanıcı Adı</label>
                     <input type="text" class="form-control" asp-for="UserName">

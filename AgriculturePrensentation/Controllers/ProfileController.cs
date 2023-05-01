@@ -32,7 +32,7 @@ namespace AgriculturePrensentation.Controllers
                 values.Email = P.Mail;
                 values.PhoneNumber = P.Phone;
                 values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, P.password);
-                var result= await _userManager.UpdateAsync(values);
+                var result = await _userManager.UpdateAsync(values);
                 if (result.Succeeded) 
                 {
                     return RedirectToAction("Index", "Login");

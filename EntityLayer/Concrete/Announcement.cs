@@ -13,5 +13,6 @@ namespace EntityLayer.Concrete
         public string Description { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

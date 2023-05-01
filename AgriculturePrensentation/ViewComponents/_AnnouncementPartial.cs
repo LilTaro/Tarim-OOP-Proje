@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AgriculturePrensentation.ViewComponents
 {
 	public class _AnnouncementPartial:ViewComponent
 	{
-		public IViewComponentResult Invoke()
+		private readonly IAnnouncementService _announcementService;
+
+        public _AnnouncementPartial(IAnnouncementService announcementService)
+        {
+            _announcementService = announcementService;
+        }
+
+        public IViewComponentResult Invoke()
 		{
-			return View();
+			var values = _announcementService.GetListAll();
+			return View(values);
 		}
 	}
 }
