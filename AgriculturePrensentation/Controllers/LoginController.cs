@@ -1,6 +1,7 @@
 ﻿using AgriculturePrensentation.Models;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using DocumentFormat.OpenXml.Office2021.DocumentTasks;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,10 @@ namespace AgriculturePrensentation.Controllers
 	[AllowAnonymous]
 	public class LoginController : Controller
 	{
-		private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+		private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-		public LoginController(UserManager<IdentityUser> userManager,SignInManager<IdentityUser> signInManager) 
+		public LoginController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager) 
 		{
             _signInManager = signInManager;
 			_userManager = userManager;
@@ -51,14 +52,14 @@ namespace AgriculturePrensentation.Controllers
 		[HttpPost]
         public async Task<IActionResult> SignUp(RegisterViewModel registerViewModel)
         {
-            IdentityUser ıdentityUser = new IdentityUser()
+            AppUser identityUser = new AppUser()
             {
                 UserName = registerViewModel.UserName,
                 Email = registerViewModel.Mail
             };
             if (registerViewModel.password == registerViewModel.PasswordConfirm)
             {
-                var result = await _userManager.CreateAsync(ıdentityUser, registerViewModel.password);
+                var result = await _userManager.CreateAsync(identityUser, registerViewModel.password);
 
                 if (result.Succeeded)
                 {

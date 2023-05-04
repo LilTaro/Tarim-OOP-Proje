@@ -1,3 +1,4 @@
+using AgriculturePrensentation.Models;
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using BusinessLayer.Container;
@@ -5,6 +6,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Context;
 using DocumentFormat.OpenXml.InkML;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -38,7 +40,8 @@ namespace AgriculturePrensentation
 
 
 			services.AddDbContext<AgricultureContext>();
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AgricultureContext>();
+            services.AddIdentity<AppUser, AppRole>().
+            AddEntityFrameworkStores<AgricultureContext>().AddErrorDescriber<CustomIdentityValidator>();
 
             services.ContainerDependecies();
 
@@ -74,9 +77,8 @@ namespace AgriculturePrensentation
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
             app.UseAuthentication();
+            app.UseRouting();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

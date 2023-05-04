@@ -1,5 +1,6 @@
 ﻿using AgriculturePrensentation.Models;
 using DocumentFormat.OpenXml.Office2021.DocumentTasks;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,9 +9,9 @@ namespace AgriculturePrensentation.Controllers
 {
     public class ProfileController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public ProfileController(UserManager<IdentityUser> userManager)
+        public ProfileController(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
         }
