@@ -27,7 +27,7 @@
                             <tr>
                                 <td>@item.AnnouncementID</td>
                                 <td>@item.Title</td>
-                                <td>@item.Date</td>
+                                <td>@item.Date.ToShortDateString()</td>
                                 <td><a href="/Announcements/DeleteAnnouncement/@item.AnnouncementID" class="btn btn-outline-danger">Sil</a></td>
                                 <td><a href="/Announcements/EditAnnouncement/@item.AnnouncementID" class="btn btn-outline-info">Düzenle</a></td>
                                 @if (item.Status == true)
